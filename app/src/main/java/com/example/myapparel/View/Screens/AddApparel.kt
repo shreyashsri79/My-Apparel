@@ -60,11 +60,16 @@ fun AddApparel(
 fun HeaderCard(){
     Card(
     ) {
-        Text(
-            text = "ADD APPAREL",
-            fontSize = 30.sp,
-            style = MaterialTheme.typography.displayLarge
-        )
+        Column(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Text(
+                text = "ADD APPAREL",
+                fontSize = 30.sp,
+                style = MaterialTheme.typography.displayLarge
+            )
+        }
     }
 }
 

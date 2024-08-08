@@ -3,4 +3,5 @@
     <string name="clothes_in_laundry">"Clothes in Laundry"</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="title_activity_add_apparel">AddApparelActivity</string>
+    <string name="title_activity_add_clothes_screen">AddClothesScreenActivity</string>
 </resources>

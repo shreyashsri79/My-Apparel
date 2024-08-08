@@ -9,8 +9,8 @@ object BrowseApparelChoices{
         ApparelChoicesClass(R.drawable.shirt, "Browse\nTorso"),
         ApparelChoicesClass(R.drawable.shorts, "Browse\nLegs"),
         ApparelChoicesClass(R.drawable.shoes, "Browse\nShoes"),
-        ApparelChoicesClass(R.drawable.wristwatch, "Browse\nAcces\nsories"),
-        ApparelChoicesClass(R.drawable.kurta, "Browse\nEthenic\nWears"),
-        ApparelChoicesClass(R.drawable.coats, "Browse\nFormal\nWears"),
+        ApparelChoicesClass(R.drawable.wristwatch, "Browse\nAccessories"),
+        ApparelChoicesClass(R.drawable.kurta, "Browse\nEthenic Wears"),
+        ApparelChoicesClass(R.drawable.coats, "Browse\nFormal Wears"),
     )
 }

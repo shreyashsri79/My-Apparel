@@ -5,12 +5,19 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowDropUp
+import androidx.compose.material.icons.filled.ExpandLess
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardColors
 import androidx.compose.material3.Icon
@@ -20,6 +27,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
@@ -43,7 +51,8 @@ fun PreviewBrowseCard(){
 
 @Composable
 fun BrowseApparel(
-    apparel: List<ApparelChoicesClass>
+    apparel: List<ApparelChoicesClass>,
+    close: () -> Unit = {}
 ){
     Card(
         colors = CardColors(
@@ -54,12 +63,14 @@ fun BrowseApparel(
         ),
         modifier = Modifier
             .fillMaxWidth()
-            .padding(30.dp)
+
     ) {
         Column(
             modifier = Modifier.padding(top = 30.dp)
         ) {
-            BrowseHeaderCard()
+            BrowseHeaderCard(
+                close = { close() }
+            )
             LazyColumn(
                 modifier = Modifier.padding( top = 20.dp, bottom = 20.dp)
             ) {
@@ -73,10 +84,13 @@ fun BrowseApparel(
 }
 
 @Composable
-fun BrowseHeaderCard(){
-    Column(
+fun BrowseHeaderCard(
+    close : () -> Unit = {}
+){
+    Row(
         modifier = Modifier.fillMaxWidth(),
-        horizontalAlignment = Alignment.CenterHorizontally
+        horizontalArrangement = Arrangement.SpaceAround,
+        verticalAlignment = Alignment.CenterVertically
     ) {
         Card(
             colors = CardColors(
@@ -85,12 +99,39 @@ fun BrowseHeaderCard(){
                 disabledContainerColor = MaterialTheme.colorScheme.primaryContainer,
                 containerColor = MaterialTheme.colorScheme.primaryContainer
             ),
+            modifier = Modifier.width(250.dp)
         ) {
-            Text(
-                text = "BROWSE APPAREL",
-                fontSize = 30.sp,
-                style = MaterialTheme.typography.displayLarge
-            )
+            Row (
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.Center
+            ){
+                Text(
+                    text = "BROWSE\nAPPAREL",
+                    fontSize = 30.sp,
+                    style = MaterialTheme.typography.displayLarge
+                )
+            }
+        }
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.Center
+        ) {
+            Button(
+                onClick = { close() },
+                colors = ButtonColors(
+                    containerColor = MaterialTheme.colorScheme.primaryContainer,
+                    disabledContainerColor = MaterialTheme.colorScheme.primaryContainer,
+                    disabledContentColor = MaterialTheme.colorScheme.onPrimaryContainer,
+                    contentColor = MaterialTheme.colorScheme.onPrimaryContainer,
+                )
+            ) {
+                Icon(
+                    imageVector = Icons.Filled.ExpandLess,
+                    contentDescription = null,
+                    tint = MaterialTheme.colorScheme.onPrimaryContainer,
+                    modifier = Modifier.size(30.dp)
+                )
+            }
         }
     }
 }
@@ -109,8 +150,7 @@ fun BrowseApparelChoicesCard( apparel : ApparelChoicesClass){
     ){
         Column(
             modifier = Modifier
-                .fillMaxWidth()
-                .padding(20.dp),
+                .fillMaxWidth(),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {

@@ -4,8 +4,6 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.animation.EnterTransition
-import androidx.compose.animation.ExitTransition
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -15,7 +13,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardColors
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.FabPosition
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
@@ -30,17 +27,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavHostController
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
-import androidx.navigation.compose.rememberNavController
 import com.example.compose.AppTheme
-import com.example.myapparel.Model.UiData.AddApparelChoices
-import com.example.myapparel.Model.UiData.BrowseApparelChoices
 import com.example.myapparel.Model.UiData.HomeScreenIcons
 import com.example.myapparel.R
-import com.example.myapparel.View.Screens.AddApparel
-import com.example.myapparel.View.Screens.BrowseApparel
 import com.example.myapparel.View.Screens.HomeScreen
 
 class MainActivity : ComponentActivity() {
@@ -60,15 +49,8 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-enum class AllScreens(){
-    HomeScreen,
-    AddApparelScreen,
-    BrowseApparelScreen
-}
-
 @Composable
 fun AppScreen(
-    navController: NavHostController = rememberNavController(),
     modifier: Modifier = Modifier
 ){
     Scaffold(
@@ -86,7 +68,6 @@ fun AppScreen(
     ) { innerPadding ->
 
         HomeScreen(
-            icons = HomeScreenIcons.homeScreenIcons,
             modifier = Modifier.padding(innerPadding)
         )
     }
